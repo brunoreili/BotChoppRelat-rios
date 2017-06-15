@@ -57,14 +57,14 @@ public class ControllerBot{
         estado.processaMensagem(mensagem);        
         estados.put(user_id, estado.getProximoEstado());
 
-        if(user_id > 100) // significa que estamos fazendo testes. O userID do telegram tem varios digitos. Nesse caso nao enviaremos a resposta via telegram
+        /*if(user_id > 100) // significa que estamos fazendo testes. O userID do telegram tem varios digitos. Nesse caso nao enviaremos a resposta via telegram
         {
             try {
                 new Sender(BOT_ID).sendResponse(user_id, estado.getMensagemResposta());
             } catch (IOException ex) {
                 Logger.getLogger(ControllerBot.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+        }*/
         
         //Cadastro no banco de itens iniciais!
         EspetinhoDAO bancoEspetinho = new EspetinhoDAO(context);

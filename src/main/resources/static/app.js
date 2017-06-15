@@ -1,4 +1,4 @@
-var app = angular.module("botapp",[]);
+var app = angular.module("botapp",['ngRoute']);
 
 app.controller("botctrl", function($scope, $http){
        
@@ -30,7 +30,7 @@ app.controller("botctrl", function($scope, $http){
         console.log("foi!");
     }
     
-    /*//Módulo de Rotas
+    //Módulo de Rotas
     app.config(function($routeProvider){
         $routeProvider
             .when('/cadastro', {
@@ -42,7 +42,7 @@ app.controller("botctrl", function($scope, $http){
             .otherwise({
                 templateUrl: 'html/home.html'
             });
-    });*/
+    });
     
     $scope.itens = [];
     $scope.categorias = [
