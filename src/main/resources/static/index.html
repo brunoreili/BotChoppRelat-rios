@@ -110,7 +110,7 @@
         <hr/><!--Consumo Médio-->
         <div class="jumbotron">
             <h3>Consumo Médio de Clientes</h3>
-            <button class="btn btn-primary" ng-click="listarCliente(cliente)">Listar</button>
+            <button class="btn btn-primary" ng-click="listarCliente()">Listar</button>
             <h4 ng-show="buscando">Buscando...</h4>
             
             <table class="table table-striped" ng-show="itens">
@@ -120,7 +120,7 @@
                 </tr>
                 <tr ng-repeat="cliente in clientes">
                     <td>{{cliente.first_name}}</td>
-                    <td>{{cliente.consumoMedio}}</td>
+                    <td>R$ {{cliente.consumoMedio}}</td>
                 </tr>
             </table>
         </div>
