@@ -12,7 +12,7 @@ app.controller("botctrl", function($scope, $http){
         update.message.text = texto;
         
         
-        $http.post("https://projeto-lab-chopp.herokuapp.com/update", update)
+        $http.post("http://localhost:8080/update", update)
             .then(function(result){
                 console.log('result');
                 console.log(result);
@@ -185,10 +185,13 @@ app.controller("botctrl", function($scope, $http){
                 });
         }
 
-    }  
+    }
+    
+    $scope.clientes = [];
+    
     $scope.listarCliente = function(){
         $scope.buscando = true;
-            $http.get("https://projeto-lab-chopp.herokuapp.com/cliente")
+            $http.get("http://localhost:8080/cliente")
                 .then(function(cliente){
                     $scope.buscando=false;
                     console.log(cliente);
