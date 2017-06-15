@@ -182,6 +182,9 @@ app.controller("botctrl", function($scope, $http){
                 },function(erro){
                     $scope.buscando=false;
                     console.log(erro);
+                },function(erro){
+                    $scope.buscando=false;
+                    console.log(erro);
                 });
         }
 
@@ -193,6 +196,8 @@ app.controller("botctrl", function($scope, $http){
         $scope.buscando = true;
             $http.get("https://projeto-lab-chopp.herokuapp.com/cliente")
                 .then(function(cliente){
+                    console.log('Vaaaai!');
+                    console.log(cliente);
                     $scope.buscando=false;
                     console.log(cliente);
                     $scope.clientes = cliente.data;
