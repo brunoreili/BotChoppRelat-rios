@@ -112,12 +112,12 @@
             
             <table class="table table-striped" ng-show="clientes">
                 <tr>
-                    <th style="text-align: center">Categoria</th>
+                    <th style="text-align: center">{{nome}}</th>
                     <th style="text-align: center">{{propriedade}}</th>
                 </tr>
                 <tr ng-repeat="cliente in clientes">
-                    <td ng-repeat="nome in nomes">{{nome}}</td>
-                    <td ng-repeat="consumo in consumos">R$ {{teste}}</td>
+                    <td>{{teste[0]}}</td>
+                    <td>{{teste2[0]}}</td>
                 </tr>
             </table>
         </div>

@@ -12,7 +12,7 @@ app.controller("botctrl", function($scope, $http){
         update.message.text = texto;
         
         
-        $http.post("https://projeto-lab-chopp.herokuapp.com/update", update)
+        $http.post("http://localhost:8080/update", update)
             .then(function(result){
                 console.log('result');
                 console.log(result);
@@ -222,26 +222,27 @@ app.controller("botctrl", function($scope, $http){
         console.log("latório"); 
         if(cliente.relatorio.modelo === "Consumo Médio de Clientes"){
             console.log("FOI!!!, CONSUMO MÉDIO");
-            $scope.nome = "Nome";
-            $scope.propriedade = "Consumo Médio";
+            $scope.nome = "Id";
+            $scope.propriedade = "Categoria";
             
-            $http.get("https://projeto-lab-chopp.herokuapp.com/clientes")
+            $http.get("http://localhost:8080/clientes")
                 .then(function(cliente){
                     console.log('Vaaaai!');
                     $scope.buscando=false;
+                    $scope.clientes = cliente.data;
                     
-                    $scope.nomes = [];
+                    $scope.teste = [];
                     for(i = 0; i < cliente.data.length; i++){
-                       $scope.nomes.push(cliente.data[i].id);
-                        
+                       $scope.teste.push(cliente.data[i].id)   
                     }
-                    console.log($scope.nomes);
-                    $scope.consumos = [];
+                    console.log($scope.teste[0]);
+                    
+                    $scope.teste2 = [];
                     for(i = 0; i < cliente.data.length; i++){
-                       $scope.consumos.push(cliente.data[i].categoria);
-                        
+                       $scope.teste2.push(cliente.data[i].categoria)   
                     }
-                    console.log($scope.consumos);                 
+                    console.log($scope.teste2[0]);
+                                    
 
                 },function(erro){
                     $scope.buscando=false;
