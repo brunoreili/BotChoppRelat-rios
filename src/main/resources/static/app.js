@@ -12,7 +12,7 @@ app.controller("botctrl", function($scope, $http){
         update.message.text = texto;
         
         
-        $http.post("http://localhost:8080/update", update)
+        $http.post("https://projeto-lab-chopp.herokuapp.com/update", update)
             .then(function(result){
                 console.log('result');
                 console.log(result);
@@ -225,7 +225,7 @@ app.controller("botctrl", function($scope, $http){
             $scope.nome = "Nome";
             $scope.propriedade = "Consumo Médio";
             
-            $http.get("http://localhost:8080/clientes")
+            $http.get("https://projeto-lab-chopp.herokuapp.com/clientes")
                 .then(function(cliente){
                     console.log('Vaaaai!');
                     $scope.buscando=false;
