@@ -115,9 +115,9 @@
                     <th style="text-align: center">Categoria</th>
                     <th style="text-align: center">{{propriedade}}</th>
                 </tr>
-                <tr>
+                <tr ng-repeat="cliente in clientes">
                     <td ng-repeat="nome in nomes">{{nome}}</td>
-                    <td ng-repeat="consumo in consumos">R$ {{consumo}}</td>
+                    <td ng-repeat="consumo in consumos">R$ {{teste}}</td>
                 </tr>
             </table>
         </div>
