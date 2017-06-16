@@ -12,7 +12,7 @@ app.controller("botctrl", function($scope, $http){
         update.message.text = texto;
         
         
-        $http.post("https://projeto-lab-chopp.herokuapp.com/update", update)
+        $http.post("http://localhost:8080/update", update)
             .then(function(result){
                 console.log('result');
                 console.log(result);
@@ -208,19 +208,53 @@ app.controller("botctrl", function($scope, $http){
     }
     
     
-    $scope.clientes = [];
-    
+    $scope.clientes = [];    
     $scope.relatorios = [
-        {modelo: "Consumo Médio por Cliente"},
+        {modelo: "Consumo Médio de Clientes"},
         {modelo: "Avaliação dos Clientes"},
-        {modelo: "Itens mais pedidos"},
+        {modelo: "Itens mais pedidos"}
     ];
     
     //RELATÓRIOS
-    $scope.listarClientes = function(){
+    
+    $scope.listarClientes = function(cliente){
         $scope.buscando = true;
         console.log("latório"); 
-            $http.get("https://projeto-lab-chopp.herokuapp.com/clientes")
+        if(cliente.relatorio.modelo === "Consumo Médio de Clientes"){
+            console.log("FOI!!!, CONSUMO MÉDIO");
+            $scope.nome = "Nome";
+            $scope.propriedade = "Consumo Médio";
+            
+            $http.get("http://localhost:8080/clientes")
+                .then(function(cliente){
+                    console.log('Vaaaai!');
+                    $scope.buscando=false;
+                    
+                    $scope.nomes = [];
+                    for(i = 0; i < cliente.data.length; i++){
+                       $scope.nomes.push(cliente.data[i].id);
+                        
+                    }
+                    console.log($scope.nomes);
+                    $scope.consumos = [];
+                    for(i = 0; i < cliente.data.length; i++){
+                       $scope.consumos.push(cliente.data[i].categoria);
+                        
+                    }
+                    console.log($scope.consumos);                 
+
+                },function(erro){
+                    $scope.buscando=false;
+                    console.log(erro);
+                });
+        }
+        if(cliente.relatorio.modelo === "Avaliação dos Clientes"){
+            console.log("FOI!!!, AVALIAÇÃO")
+            $scope.nome = "Nome";
+            $scope.propriedade = "Nota da Avaliação";
+            $scope.primeiroNome = cliente.first_name;
+            $scope.operacao = cliente.avaliacao;
+            $http.get("http://localhost:8080/clientes")
                 .then(function(cliente){
                     console.log('Vaaaai!');
                     console.log(cliente);
@@ -232,5 +266,22 @@ app.controller("botctrl", function($scope, $http){
                     console.log(erro);
                 });
         }
+        if(cliente.relatorio.modelo === "Itens mais pedidos"){
+            console.log("FOI!!!, MAIS PEDIDOS")
+            $scope.nome = "Nome";
+            $scope.propriedade = "Nota da Avaliação";
+            $http.get("http://localhost:8080/clientes")
+                .then(function(cliente){
+                    console.log('Vaaaai!');
+                    console.log(cliente);
+                    $scope.buscando=false;
+                    console.log(cliente);
+                    $scope.clientes = cliente.data;
+                },function(erro){
+                    $scope.buscando=false;
+                    console.log(erro);
+                });
+        }
+    }
     
 });

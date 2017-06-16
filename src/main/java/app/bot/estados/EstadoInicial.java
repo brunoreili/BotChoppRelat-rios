@@ -51,7 +51,9 @@ public class EstadoInicial extends Estado{
                                         + "\n\nTESTE!\n " + //APENAS PARA TESTAR
                                         "NOTA AVALIAÇÃO: " + cliente.getAvaliacao() + " \n" +
                                         "CONSUMO MÉDIO: " + cliente.getConsumoMedio() + " \n" +
-                                        "CATEGORIA: " + cliente.getCategoria();                    
+                                        "CATEGORIA: " + cliente.getCategoria();  
+
+                                        
                     proximoEstado = new EstadoDecidindo(context, cliente, comanda); //Colocar If para decidir se vai fechar a comanda ou voltar! //Analisar os parametros
                     break;
             default:

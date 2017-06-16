@@ -102,21 +102,22 @@
         <div class="jumbotron">
             <h3>Relatórios</h3>
             <hr/>
-            <select class="form-control" ng-model="relatorio.tipo"
+            <select class="form-control" ng-model="cliente.relatorio"
                     ng-options="relatorio.modelo for relatorio in relatorios">
                 <option value="">Selecione o relatório</option>
             </select> <br/>
-            <button class="btn btn-primary" ng-click="listarClientes()">Gerar</button>
+            <button class="btn btn-primary" ng-click="listarClientes(cliente)"
+                    ng-disabled="!cliente.relatorio">Gerar</button>
             <h4 ng-show="buscando">Buscando...</h4>
             
-            <table class="table table-striped" ng-show="itens">
+            <table class="table table-striped" ng-show="clientes">
                 <tr>
-                    <th style="text-align: center">Nome</th>
-                    <th style="text-align: center">Consumo Médio</th>
+                    <th style="text-align: center">Categoria</th>
+                    <th style="text-align: center">{{propriedade}}</th>
                 </tr>
-                <tr ng-repeat="cliente in clientes">
-                    <td>{{cliente.first_name}}</td>
-                    <td>R$ {{cliente.consumoMedio}}</td>
+                <tr>
+                    <td ng-repeat="nome in nomes">{{nome}}</td>
+                    <td ng-repeat="consumo in consumos">R$ {{consumo}}</td>
                 </tr>
             </table>
         </div>

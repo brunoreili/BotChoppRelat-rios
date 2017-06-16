@@ -6,6 +6,7 @@ import app.bot.comanda.Comanda;
 import app.bot.comanda.ComandaRepository;
 import app.bot.comanda.ItemComandaRepository;
 import app.bot.dao.ComandaDAO;
+import java.util.List;
 import org.springframework.context.ApplicationContext;
 
 public class EstadoPagamento extends Estado {
@@ -41,8 +42,12 @@ public class EstadoPagamento extends Estado {
                     break;
                 case "2":
                     deletaComanda();
+                    
+                    List<String> itens = comandaDAO.recuperaItensComanda();
+                    mensagemResposta = "ITENS " + itens.size();
+                    
                     salvaAvaliacao(2);
-                    mensagemResposta = "Muito obrigado, " + cliente.getFirst_name() + ".\n" +
+                    mensagemResposta += "Muito obrigado, " + cliente.getFirst_name() + ".\n" +
                                        "O Laboratório do Chopp agradece a sua vinda!\n" +
                                        "Esperamos que volte mais vezes!";                                   
                     proximoEstado = new EstadoApresentacao(context, cliente, comanda);      
