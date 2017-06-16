@@ -66,10 +66,10 @@
             {{resposta.data.texto}}
         </div>
         
-        <hr/><!--Cadastro de Itens-->         
+        <hr/><!--Crud De Itens-->         
         <div class="jumbotron">
             
-            <h3>Cadastro de Itens</h3>
+            <h3>Administração de Cardápio</h3>
             <hr/>
             <select class="form-control" ng-model="item.categoria" 
                     ng-options="categoria.nome group by categoria.tipo for categoria in categorias">
@@ -80,37 +80,33 @@
             <button class="btn btn-primary" ng-click="adcionarItem(item)" 
                     ng-disabled="!item.nome || !item.valor || !item.categoria">Adcionar Item
             </button>
+            <button class="btn btn-primary" ng-click="listarItem(item)" ng-disabled="!item.categoria">Listar</button>
             <hr/>
             <h4 ng-show="enviando">Enviando...</h4> 
             <h4>{{mensagem}}</h4>
-        </div>
-        
-        <hr/><!--Listar Itens-->
-        <div class="jumbotron">
-            <h3>Listar Itens</h3>
-            <hr/>
-            <select class="form-control" ng-model="item.categoria" ng-options="categoria.nome group by categoria.tipo for categoria in categorias">
-                <option value="">Selecione a categoria do item</option>
-            </select> <br/>
-            <button class="btn btn-primary" ng-click="listar(item)" ng-disabled="!item.categoria">Listar</button>
-            <h4 ng-show="buscando">Buscando...</h4>
-            
             <table class="table table-striped" ng-show="itens">
                 <tr>
+                    <th></th>
                     <th style="text-align: center">Nome</th>
                     <th style="text-align: center">valor R$</th>
                 </tr>
                 <tr ng-repeat="item in itens">
+                    <td><button class="btn btn-danger" ng-click="deletarItem(item)">Deletar</button></td>
                     <td>{{item.nome}}</td>
                     <td>{{item.valor}}</td>
                 </tr>
             </table>
-        </div>
-        
-        <hr/><!--Consumo Médio-->
+        </div>        
+              
+        <hr/><!--Relatórios-->
         <div class="jumbotron">
-            <h3>Consumo Médio de Clientes</h3>
-            <button class="btn btn-primary" ng-click="listarCliente()">Gerar</button>
+            <h3>Relatórios</h3>
+            <hr/>
+            <select class="form-control" ng-model="relatorio.tipo"
+                    ng-options="relatorio.modelo for relatorio in relatorios">
+                <option value="">Selecione o relatório</option>
+            </select> <br/>
+            <button class="btn btn-primary" ng-click="listarClientes()">Gerar</button>
             <h4 ng-show="buscando">Buscando...</h4>
             
             <table class="table table-striped" ng-show="itens">

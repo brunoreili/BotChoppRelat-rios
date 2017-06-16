@@ -31,7 +31,8 @@ import java.util.List;
 public class ControllerBar {
     
     @Autowired
-    private ApplicationContext context;    
+    private ApplicationContext context;
+    @Autowired
     private ItemEspetinhoRepository itemEspetinhoRepository;
     private ItemPorcaoRepository itemPorcaoRepository;
     private ItemCervejaRepository itemCervejaRepository;
@@ -110,7 +111,7 @@ public class ControllerBar {
 
     }
     
-    //Listar Banco    
+    //Listar Itens    
     @RequestMapping(method=RequestMethod.GET, value="/listaEspetinhos")
     public List<ItemEspetinho> listarEspetinhos() {
 
@@ -160,9 +161,20 @@ public class ControllerBar {
         return (List<ItemNaoAlcool>) itemNaoAlcoolRepository.findAll();
 
     }
+    
+    //Alterar Itens
+    @RequestMapping(method=RequestMethod.DELETE, value="/deletarItens/{id}")
+    public void deletarItens(ItemEspetinho item) {
+
+        System.out.println("uebaaa!!! Deletando");
+        itemEspetinhoRepository = context.getBean(ItemEspetinhoRepository.class);
+
+        itemEspetinhoRepository.delete(item.getId());
+
+    }
  
     //CLIENTE
-    @RequestMapping(method=RequestMethod.GET, value="/cliente")
+    @RequestMapping(method=RequestMethod.GET, value="/clientes")
     public List<Cliente> listarClientes(){
         
         clienteRepository = context.getBean(ClienteRepository.class);

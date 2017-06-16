@@ -52,7 +52,7 @@ app.controller("botctrl", function($scope, $http){
         {nome: "Drink", tipo: "Bebidas"},
         {nome: "Não Alcoólico", tipo: "Bebidas"}
     ];
-    
+    //CRUD
     $scope.adcionarItem = function (item) {
         delete $scope.item;
         $scope.enviando=true;
@@ -126,7 +126,7 @@ app.controller("botctrl", function($scope, $http){
         }  
     
     }    
-    $scope.listar = function(item){
+    $scope.listarItem = function(item){
         $scope.buscando = true;
         console.log("buscandooOOOoo");        
         if(item.categoria.nome === "Espetinho"){
@@ -189,12 +189,38 @@ app.controller("botctrl", function($scope, $http){
         }
 
     }
+    $scope.deletarItem = function(item){
+        $scope.enviando = true;
+        console.log("Deletandoooo");
+        console.log(item);
+               
+            $http.post("https://projeto-lab-chopp.herokuapp.com/deletarItens/{item.id}", item.id)
+                .then(function(){
+                    console.log("Deletou");
+                    $scope.enviando=false;
+                    $scope.mensagem="Deletou!";
+                },function(){
+                    console.log("Erro");
+                    $scope.enviando=false;
+                    $scope.mensagem="Não deletou!";
+                });
+        
+    }
+    
     
     $scope.clientes = [];
     
-    $scope.listarCliente = function(){
+    $scope.relatorios = [
+        {modelo: "Consumo Médio por Cliente"},
+        {modelo: "Avaliação dos Clientes"},
+        {modelo: "Itens mais pedidos"},
+    ];
+    
+    //RELATÓRIOS
+    $scope.listarClientes = function(){
         $scope.buscando = true;
-            $http.get("https://projeto-lab-chopp.herokuapp.com/cliente")
+        console.log("latório"); 
+            $http.get("https://projeto-lab-chopp.herokuapp.com/clientes")
                 .then(function(cliente){
                     console.log('Vaaaai!');
                     console.log(cliente);
