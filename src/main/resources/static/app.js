@@ -235,13 +235,13 @@ app.controller("botctrl", function($scope, $http){
                     for(i = 0; i < cliente.data.length; i++){
                        $scope.teste.push(cliente.data[i].id)   
                     }
-                    console.log($scope.teste[0]);
+                    console.log($scope.teste);
                     
                     $scope.teste2 = [];
                     for(i = 0; i < cliente.data.length; i++){
                        $scope.teste2.push(cliente.data[i].categoria)   
                     }
-                    console.log($scope.teste2[0]);
+                    console.log($scope.teste2);
                                     
 
                 },function(erro){
