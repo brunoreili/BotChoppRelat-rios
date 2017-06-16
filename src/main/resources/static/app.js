@@ -12,7 +12,7 @@ app.controller("botctrl", function($scope, $http){
         update.message.text = texto;
         
         
-        $http.post("https://projeto-lab-chopp.herokuapp.com/update", update)
+        $http.post("http://localhost:8080/update", update)
             .then(function(result){
                 console.log('result');
                 console.log(result);
@@ -225,7 +225,7 @@ app.controller("botctrl", function($scope, $http){
             $scope.nome = "Id";
             $scope.propriedade = "Categoria";
             
-            $http.get("https://projeto-lab-chopp.herokuapp.com/clientes")
+            $http.get("http://localhost:8080/clientes")
                 .then(function(cliente){
                     console.log('Vaaaai!');
                     $scope.buscando=false;
@@ -236,6 +236,7 @@ app.controller("botctrl", function($scope, $http){
                     for(i = 0; i < cliente.data.length; i++){
                        $scope.teste.push(cliente.data[i].id)
                        $scope.teste2.push(cliente.data[i].categoria)
+                       $scope.i = i;
                     }
                     console.log($scope.teste);
                     console.log($scope.teste2);    
