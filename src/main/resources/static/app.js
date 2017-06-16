@@ -233,6 +233,7 @@ app.controller("botctrl", function($scope, $http){
                     
                     $scope.teste = [];
                     $scope.teste2 = [];
+                    $scope.i = [];
                     for(i = 0; i < cliente.data.length; i++){
                        $scope.teste.push(cliente.data[i].id)
                        $scope.teste2.push(cliente.data[i].categoria)
