@@ -115,10 +115,11 @@
                     <th style="text-align: center">{{nome}}</th>
                     <th style="text-align: center">{{propriedade}}</th>
                 </tr>
-                <tr ng-repeat="cliente in clientes" >
-                    <td>{{ids}}</td>
-                    <td>{{categs}}</td>
+
+                <tr ng-repeat="cliente in clientes">
+                    <td ng-repeat="id in ids">{{id}}</td>
                 </tr>
+
             </table>
         </div>
             
