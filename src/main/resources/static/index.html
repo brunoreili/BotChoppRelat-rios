@@ -110,14 +110,14 @@
                     ng-disabled="!cliente.relatorio">Gerar</button>
             <h4 ng-show="buscando">Buscando...</h4>
             
-            <table class="table table-striped" ng-show="clientes">
+            <table class="table table-striped" ng-show="cliente">
                 <tr>
                     <th style="text-align: center">{{nome}}</th>
                     <th style="text-align: center">{{propriedade}}</th>
                 </tr>
-                <tr ng-repeat="cliente in clientes">
-                    <td>{{cliente.id}}</td>
-                    <td>{{cliente.categoria}}</td>
+                <tr ng-repeat="cliente in clientes" >
+                    <td>{{ids}}</td>
+                    <td>{{categs}}</td>
                 </tr>
             </table>
         </div>
