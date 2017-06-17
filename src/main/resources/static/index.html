@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
         .jumbotron{
-            width: 500px;
+            width: 700px;
             text-align: center;
             margin-left: auto;
             margin-right: auto;
@@ -20,7 +20,7 @@
         }
         .form-control{
             width: 400px;
-            margin-left: 50px;
+            margin-left: 150px;
         }
     </style>            
     </head>
@@ -110,18 +110,28 @@
                     ng-disabled="!cliente.relatorio">Gerar</button>
             <h4 ng-show="buscando">Buscando...</h4>
             
-            <table class="table table-striped" ng-show="cliente">
-                <tr>
-                    <th style="text-align: center">{{nome}}</th>
-                    <th style="text-align: center">{{propriedade}}</th>
-                </tr>
-
-                <tr ng-repeat="cliente in clientes">
-                    <td ng-repeat="id in ids">{{id}}</td>
-                </tr>
-
-            </table>
-        </div>
-            
+            <div  class="row">
+                <div style="float: left" class="col-md-6">
+                    <table class="table table-striped" ng-show="cliente">
+                        <tr>
+                            <th style="text-align: center">{{nome}}</th>
+                        </tr>
+                        <tr ng-repeat="id in ids track by $index">
+                            <td>{{id}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="float: left" class="col-md-6">
+                    <table class="table table-striped" ng-show="cliente">
+                        <tr>
+                            <th style="text-align: center">{{propriedade}}</th>
+                        </tr>
+                        <tr ng-repeat="teste in testes track by $index">
+                            <td>{{teste}}</td>
+                        </tr>
+                    </table>
+                </div>  
+            </div>
+        </div>    
     </body>    
 </html>

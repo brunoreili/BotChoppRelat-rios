@@ -233,11 +233,13 @@ app.controller("botctrl", function($scope, $http){
                                        
                                     
                     $scope.ids = [];
+                    $scope.testes = [];
                     for(i = 0; i < cliente.data.length; i++){
                        $scope.ids.push(cliente.data[i].id);
-                       $scope.ids.push(cliente.data[i].avaliacao);
+                       $scope.testes.push(cliente.data[i].categoria);
                     }
                     console.log($scope.ids);
+                    console.log($scope.testes);
                                     
                 },function(erro){
                     $scope.buscando=false;
