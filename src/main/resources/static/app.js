@@ -222,7 +222,7 @@ app.controller("botctrl", function($scope, $http){
         console.log("latório"); 
         if(cliente.relatorio.modelo === "Consumo Médio de Clientes"){
             console.log("FOI!!!, CONSUMO MÉDIO");
-            $scope.nome = "Id";
+            $scope.nome = "LUCAS";
             $scope.propriedade = "Categoria";
             
             $http.get("https://projeto-lab-chopp.herokuapp.com/clientes")
@@ -231,17 +231,15 @@ app.controller("botctrl", function($scope, $http){
                     $scope.buscando=false;
                     $scope.clientes = cliente.data;
                     
-                    $scope.teste = [];
+                /*    $scope.teste = [];
                     $scope.teste2 = [];
-                    $scope.i = [];
                     for(i = 0; i < cliente.data.length; i++){
                        $scope.teste.push(cliente.data[i].id)
                        $scope.teste2.push(cliente.data[i].categoria)
-                       $scope.i = i;
                     }
                     console.log($scope.teste);
                     console.log($scope.teste2);    
-                    
+                */    
                 },function(erro){
                     $scope.buscando=false;
                     console.log(erro);
